@@ -1,6 +1,6 @@
 # SchedulePlanner
 
-Howdy! This will be an app to help people in school manage their exams.
+Howdy! This will be an app to help people in school manage their exams. A great way to get my foot in the Android door and start learning the platform!
 
 Features hopefully will include:
 - Create exams and view on a calendar.
@@ -10,3 +10,5 @@ Features hopefully will include:
 This app uses Caldroid (https://github.com/roomorama/Caldroid), available for use under MIT license
 
 Minimum Android version required: 4.4.2 for compatibility with Caldroid. 
+
+- Feedback, advice, feature requests: hit me up at ruler@christopher-neve.com or christopher.leneve@gmail.com.

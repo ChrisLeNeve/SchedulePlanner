@@ -1,7 +1,6 @@
 package fr.nevechris.scheduleplanner;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,9 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
 import java.util.ArrayList;
@@ -32,10 +29,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import fr.nevechris.scheduleplanner.connection.DatabaseContract;
 import fr.nevechris.scheduleplanner.connection.DatabaseManager;
-import fr.nevechris.scheduleplanner.connection.DbHelper;
-
-import static android.R.attr.id;
-import static fr.nevechris.scheduleplanner.R.string.menu_home;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private CaldroidFragment caldroidFragment;
@@ -58,24 +51,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
 //        Context test = this.getApplicationContext();
-//        test.deleteDatabase("planner2.db");
+//        test.deleteDatabase("planner2.d
+// b");
 
         DatabaseManager.createDbHelper(getApplication());
 
         caldroidFragment = new CaldroidFragment();
-        insertSampleData();
-        insertCalendarAndColourTheseDates(fetchTheSampleExamDates());
+        insertCalendarAndUpdateData();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_create_exam);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_create_exam),
+                deleteExamsFab = (FloatingActionButton) findViewById(R.id.fab_delete_all_exams);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent newExamActivity = new Intent(getApplicationContext(), CreateExamActivity.class);
                 startActivity(newExamActivity);
-//                Intent examsActivity = new Intent(getApplicationContext(), ExamsActivity.class);
-//                startActivity(examsActivity);
             }
         });
+
+        deleteExamsFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteAllExams();
+            }
+        });
+
+    }
+
+    public void insertCalendarAndUpdateData() {
+        //insertSampleData();
+        insertCalendarAndColourTheseDates(fetchTheExamDates());
     }
 
     private void insertSampleData() {
@@ -92,6 +97,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         long newRowId = writeDb.insert(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, null, values);
     }
 
+    private void deleteAllExams()  {
+        SQLiteDatabase writeDb = DatabaseManager.getConnection().getWritableDatabase();
+        writeDb.delete(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, null, null);
+    }
+
     private static String getSampleStartDate() {
         // November 1st. To date. Then to long (unix timestamp). Then to string.
         Date d = new GregorianCalendar(2017, 10, 10).getTime();
@@ -99,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return String.valueOf(dateMilliseconds);
     }
 
-    private List<Date> fetchTheSampleExamDates() {
+    private static List<Date> fetchTheExamDates() {
         SQLiteDatabase readDb = DatabaseManager.getConnection().getReadableDatabase();
         String[] projection = {
                 DatabaseContract.FeedEntry.EXAMS_EXAMID,
@@ -110,16 +120,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         List<Date> allExamDates = new ArrayList<Date>();
         Date currentDate = null;
         while(cursor.moveToNext()) {
-            int itemId = cursor.getInt(
-                    cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_EXAMID));
-            long lStartDate = cursor.getLong(
-                    cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_DATE)
-            );
+            int itemId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_EXAMID));
+            long lStartDate = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_DATE));
 
-            currentDate = new Date(lStartDate);
-            allExamDates.add(currentDate);
+            allExamDates.add(new Date(lStartDate));
         }
-
         cursor.close();
 
         return allExamDates;

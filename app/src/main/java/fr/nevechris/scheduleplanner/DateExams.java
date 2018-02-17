@@ -62,7 +62,7 @@ public class DateExams extends AppCompatActivity {
                     descriptionTV = (TextView) findViewById(R.id.examDescription),
                     teacherNameTV = (TextView) findViewById(R.id.teacherName),
                     examPlaceTV = (TextView) findViewById(R.id.examPlace);
-            titleTV.setText(exam.getTitle());
+            titleTV.setText(exam.getDescription());
             descriptionTV.setText(exam.getDescription());
             teacherNameTV.setText(exam.getTeacherName());
             examPlaceTV.setText(exam.getPlace());

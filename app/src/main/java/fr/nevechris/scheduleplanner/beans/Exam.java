@@ -17,10 +17,14 @@ public class Exam {
     private int nDifficulty;
     private String sNotes;
 
-    public Exam(int nExamId, long lDate) {
-        this.nExamId = nExamId;
-        this.lDate = lDate;
-    }
+    //TODO see which constructors are actually needed.
+    // If several are: use a builder. Otherwise: clean up
+
+//    Not used
+//    public Exam(int nExamId, long lDate) {
+//        this.nExamId = nExamId;
+//        this.lDate = lDate;
+//    }
 
     public Exam(int nExamId, String sTitle, String sDescription, String sTeacherName, String sPlace) {
         this.nExamId = nExamId;
@@ -30,9 +34,7 @@ public class Exam {
         this.sPlace = sPlace;
     }
 
-    public Exam(int nExamId, String sTitle, String sDescription, long lDate, String sTeacherName, String sPlace, int nSubjectId, int nGrade, int nDaysNeededToPrepare, int nDifficulty, String sNotes) {
-        this.nExamId = nExamId;
-        this.sTitle = sTitle;
+    public Exam(String sDescription, long lDate, String sTeacherName, String sPlace, int nDifficulty, String sNotes) {
         this.sDescription = sDescription;
         this.lDate = lDate;
         this.sTeacherName = sTeacherName;

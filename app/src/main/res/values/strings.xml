@@ -15,9 +15,12 @@
     <string name="title_activity_subjects">SubjectsActivity</string>
     <string name="title_activity_exams">ExamsActivity</string>
 
+    <string name="exam_subject">Subject</string>
     <string name="exam_description">Description</string>
     <string name="exam_teacher_name">Teacher name</string>
+    <string name="exam_difficulty">Difficulty</string>
     <string name="exam_place">Place</string>
+    <string name="exam_notes">Notes</string>
     <string name="title_activity_temp_to_delete">TempActivityToDelete</string>
     <string name="title_activity_create_exam">activity_create_exam</string>
 </resources>

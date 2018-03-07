@@ -19,7 +19,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -56,34 +58,43 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
 
         DatabaseManager.createDbHelper(getApplication());
         List<Exam> allExamsWithGrades = fetchExamsWithResults();
-        displayInTable(allExamsWithGrades);
+//        Table test - doesn't seem good, let's try something else
+//        displayInTable(allExamsWithGrades);
+
+        String[] mobileArray = {"Human reproduction (100%)", "Maths (90%)", "French (75%)", "History (0%)"};
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R .layout.results_item_template, mobileArray);
+
+        ListView listView = (ListView) findViewById(R.id.mobile_list);
+        listView.setAdapter(adapter);
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_exams);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
 
-    private void displayInTable(List<Exam> allExamWithDates) {
-        TableLayout table = (TableLayout) findViewById(R.id.contentExamsTable);
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        params.gravity = Gravity.CENTER;
-
-        for (int i = 0; i < allExamWithDates.size(); i++) {
-            TableRow row = new TableRow(this);
-
-            TextView textDescription = new TextView(this), textGrade = new TextView(this);
-            textDescription.setText(allExamWithDates.get(i).getDescription());
-            textDescription.setLayoutParams(params);
-            textGrade.setText(String.valueOf(allExamWithDates.get(i).getGrade()));
-            textGrade.setLayoutParams(params);
-
-            row.addView(textDescription);
-            row.addView(textGrade);
-
-            table.addView(row);
-        }
-    }
+//    private void displayInTable(List<Exam> allExamWithDates) {
+//        TableLayout table = (TableLayout) findViewById(R.id.contentExamsTable);
+//
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+//        params.gravity = Gravity.CENTER;
+//
+//        for (int i = 0; i < allExamWithDates.size(); i++) {
+//            TableRow row = new TableRow(this);
+//
+//            TextView textDescription = new TextView(this), textGrade = new TextView(this);
+//            textDescription.setText(allExamWithDates.get(i).getDescription());
+//            textDescription.setLayoutParams(params);
+//            textGrade.setText(String.valueOf(allExamWithDates.get(i).getGrade()));
+//            textGrade.setLayoutParams(params);
+//
+//            row.addView(textDescription);
+//            row.addView(textGrade);
+//
+//            table.addView(row);
+//        }
+//    }
 
     private List<Exam> fetchExamsWithResults() {
         SQLiteDatabase readDb = DatabaseManager.getConnection().getReadableDatabase();

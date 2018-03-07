@@ -1,5 +1,6 @@
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_height="wrap_content"
     android:layout_width="match_parent">
     <LinearLayout
@@ -16,33 +17,13 @@
             android:textSize="@dimen/form_title_size"
             android:textStyle="bold" />
     </LinearLayout>
-    <TableLayout
-        android:id="@+id/contentExamsTable"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/titleLayout"
-        android:padding="30dp"
-        android:stretchColumns="0"
-        android:shrinkColumns="1">
-        <!--TableLayout -->
-        <!--List-->
-        <TableRow>
-            <TextView
-                android:text="test"
-                android:layout_gravity="center"/>
-            <TextView
-                android:text="Test button"
-                android:layout_gravity="center"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="test"
-                android:layout_column="0"
-                android:layout_gravity="center"/>
-            <TextView
-                android:text="Test button"
-                android:layout_column="1"
-                android:layout_gravity="center"/>
-        </TableRow>
-    </TableLayout>
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ListView
+            android:id="@+id/mobile_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+    </LinearLayout>
+</LinearLayout>

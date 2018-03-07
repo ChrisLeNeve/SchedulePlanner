@@ -1,11 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="fr.nevechris.scheduleplanner.ExamsActivity"
-    tools:showIn="@layout/activity_exams">
-
-</android.support.constraint.ConstraintLayout>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+    <LinearLayout
+        android:id="@+id/titleLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <TextView
+            android:id="@+id/examTitleForDate"
+            android:gravity="center"
+            android:layout_height="80dp"
+            android:layout_width="match_parent"
+            android:text="Grades"
+            android:textColor="@color/caldroid_black"
+            android:textSize="@dimen/form_title_size"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <TableLayout
+        android:id="@+id/contentExamsTable"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/titleLayout"
+        android:padding="30dp"
+        android:stretchColumns="0"
+        android:shrinkColumns="1">
+        <!--TableLayout -->
+        <!--List-->
+        <TableRow>
+            <TextView
+                android:text="test"
+                android:layout_gravity="center"/>
+            <TextView
+                android:text="Test button"
+                android:layout_gravity="center"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="test"
+                android:layout_column="0"
+                android:layout_gravity="center"/>
+            <TextView
+                android:text="Test button"
+                android:layout_column="1"
+                android:layout_gravity="center"/>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

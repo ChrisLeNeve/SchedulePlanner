@@ -113,7 +113,7 @@
                     android:textStyle="italic" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/examLayout"
+                android:id="@+id/placeLayout"
                 android:layout_below="@id/teacherNameLayout"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -126,7 +126,28 @@
                     android:textSize="@dimen/form_text_size"
                     android:textStyle="italic" />
                 <TextView
-                    android:id="@+id/examPlace"
+                    android:id="@+id/placeTextView"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:textSize="@dimen/form_text_size"
+                    android:textStyle="italic" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/gradeLayout"
+                android:layout_below="@id/placeLayout"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+                <TextView
+                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/exam_grade"
+                    android:textSize="@dimen/form_text_size"
+                    android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/examGrade"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingLeft="20dp"

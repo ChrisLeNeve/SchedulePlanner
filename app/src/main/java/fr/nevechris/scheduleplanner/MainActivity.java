@@ -32,6 +32,7 @@ import fr.nevechris.scheduleplanner.connection.DatabaseManager;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private CaldroidFragment caldroidFragment;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +48,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
 
 //        Context test = this.getApplicationContext();
-//        test.deleteDatabase("planner2.d
-// b");
+//        test.deleteDatabase("planner2.db");
 
         DatabaseManager.createDbHelper(getApplication());
 

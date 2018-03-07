@@ -3,6 +3,7 @@ package fr.nevechris.scheduleplanner;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -61,11 +62,13 @@ public class DateExams extends AppCompatActivity {
             TextView titleTV = (TextView) findViewById(R.id.examTitleForDate),
                     descriptionTV = (TextView) findViewById(R.id.examDescription),
                     teacherNameTV = (TextView) findViewById(R.id.teacherName),
-                    examPlaceTV = (TextView) findViewById(R.id.examPlace);
+                    examPlaceTV = (TextView) findViewById(R.id.placeTextView),
+                    examGradeTV = (TextView) findViewById(R.id.examGrade);
             titleTV.setText(exam.getDescription());
             descriptionTV.setText(exam.getDescription());
             teacherNameTV.setText(exam.getTeacherName());
             examPlaceTV.setText(exam.getPlace());
+            examGradeTV.setText(String.valueOf(exam.getGrade()));
         } else {
             noExamLayout.setVisibility(View.VISIBLE);
             examLayout.setVisibility(View.INVISIBLE);
@@ -81,7 +84,8 @@ public class DateExams extends AppCompatActivity {
                 DatabaseContract.FeedEntry.EXAMS_TITLE,
                 DatabaseContract.FeedEntry.EXAMS_DESCRIPTION,
                 DatabaseContract.FeedEntry.EXAMS_TEACHER_NAME,
-                DatabaseContract.FeedEntry.EXAMS_PLACE
+                DatabaseContract.FeedEntry.EXAMS_PLACE,
+                DatabaseContract.FeedEntry.EXAMS_GRADE
         };
 
         // Where clause
@@ -97,12 +101,12 @@ public class DateExams extends AppCompatActivity {
                     sDescription = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_DESCRIPTION)),
                     sTeacherName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_TEACHER_NAME)),
                     sPlace = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_PLACE));
+            int nGrade = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_GRADE));
 
             currentExam = new Exam(nExamId, sTitle, sDescription, sTeacherName, sPlace);
-//            allExamsForDate.add(currentExam);
+            currentExam.setGrade(nGrade);// TODO organise constructors
         }
 
-//        return allExamsForDate;
         return currentExam;
     }
 

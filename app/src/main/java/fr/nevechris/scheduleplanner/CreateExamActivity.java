@@ -38,6 +38,7 @@ public class CreateExamActivity extends AppCompatActivity {
     private EditText difficultyEditText;
     private EditText placeEditText;
     private EditText notesEditText;
+    private EditText gradeEditText;
     private EditText datePicker;
     private DatePickerDialog datePickerDialog;
     private Button saveButton;
@@ -61,6 +62,7 @@ public class CreateExamActivity extends AppCompatActivity {
         difficultyEditText = (EditText) findViewById(R.id.createExam_Difficulty_EditText);
         placeEditText = (EditText) findViewById(R.id.createExam_Place_EditText);
         notesEditText = (EditText) findViewById(R.id.createExam_Notes_EditText);
+        gradeEditText = (EditText) findViewById(R.id.createExam_Grade_EditText);
         datePicker = (EditText) findViewById(R.id.createExam_Date_EditText);
         examDate = (EditText) findViewById(R.id.createExam_Date_EditText);
 
@@ -106,6 +108,7 @@ public class CreateExamActivity extends AppCompatActivity {
                     (difficultyEditText.getText().toString().equalsIgnoreCase("") ? 0 : Integer.valueOf(difficultyEditText.getText().toString())),
                     notesEditText.getText().toString()
             );
+            newExam.setGrade(Integer.parseInt(gradeEditText.getText().toString()));
             saveExam(newExam);
             goBackToHomeScreen();
         }
@@ -140,6 +143,7 @@ public class CreateExamActivity extends AppCompatActivity {
         values.put(DatabaseContract.FeedEntry.EXAMS_DIFFICULTY, exam.getDifficulty());
         values.put(DatabaseContract.FeedEntry.EXAMS_PLACE, exam.getPlace());
         values.put(DatabaseContract.FeedEntry.EXAMS_TEACHER_NAME, exam.getTeacherName());
+        values.put(DatabaseContract.FeedEntry.EXAMS_GRADE, exam.getGrade());
         long newRowId = writeDb.insert(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, null, values);
     }
 

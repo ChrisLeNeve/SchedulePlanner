@@ -26,6 +26,10 @@ public class Exam {
 //        this.lDate = lDate;
 //    }
 
+    public Exam() {
+
+    }
+
     public Exam(int nExamId, String sTitle, String sDescription, String sTeacherName, String sPlace) {
         this.nExamId = nExamId;
         this.sTitle = sTitle;

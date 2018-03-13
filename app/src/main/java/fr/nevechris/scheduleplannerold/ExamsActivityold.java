@@ -1,40 +1,31 @@
-package fr.nevechris.scheduleplanner;
+package fr.nevechris.scheduleplannerold;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import fr.nevechris.scheduleplanner.beans.Exam;
-import fr.nevechris.scheduleplanner.connection.DatabaseContract;
-import fr.nevechris.scheduleplanner.connection.DatabaseManager;
+import fr.nevechris.scheduleplannerold.beans.Examold;
+import fr.nevechris.scheduleplannerold.connection.DatabaseContract;
+import fr.nevechris.scheduleplannerold.connection.DatabaseManager;
 
-public class ExamsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ExamsActivityold extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private NavigationView navigationView;
 
@@ -57,7 +48,7 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
 
 
         DatabaseManager.createDbHelper(getApplication());
-        List<Exam> allExamsWithGrades = fetchExamsWithResults();
+        List<Examold> allExamsWithGrades = fetchExamsWithResults();
 //        Table test - doesn't seem good, let's try something else
 //        displayInTable(allExamsWithGrades);
 
@@ -74,7 +65,7 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
     }
 
 
-//    private void displayInTable(List<Exam> allExamWithDates) {
+//    private void displayInTable(List<Examold> allExamWithDates) {
 //        TableLayout table = (TableLayout) findViewById(R.id.contentExamsTable);
 //
 //        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
@@ -96,7 +87,7 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
 //        }
 //    }
 
-    private List<Exam> fetchExamsWithResults() {
+    private List<Examold> fetchExamsWithResults() {
         SQLiteDatabase readDb = DatabaseManager.getConnection().getReadableDatabase();
         String[] projection = {
                 DatabaseContract.FeedEntry.EXAMS_TITLE,
@@ -110,14 +101,14 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
 //        Cursor cursor = readDb.query(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, projection, sWhereClause, /*sWhereArgs*/null, null, null, null);
 
         Cursor cursor = readDb.query(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, projection, sWhereClause, sWhereArgs, null, null, null);
-        List<Exam> allExams = new ArrayList<Exam>();
+        List<Examold> allExams = new ArrayList<Examold>();
         Date currentDate = null;
         while(cursor.moveToNext()) {
             String examTitle = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_TITLE));
             String description = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_DESCRIPTION));
             int examGrade = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_GRADE));
 
-            Exam exam = new Exam();
+            Examold exam = new Examold();
             exam.setTitle(examTitle);
             exam.setDescription(description);
             exam.setGrade(examGrade);
@@ -146,10 +137,10 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+            Intent mainActivity = new Intent(getApplicationContext(), MainActivityold.class);
             startActivity(mainActivity);
 //        } else if (id == R.id.nav_subjects) { //View outdated
-//            Intent subjectsActivity = new Intent(getApplicationContext(), SubjectsActivity.class);
+//            Intent subjectsActivity = new Intent(getApplicationContext(), SubjectsActivityold.class);
 //            startActivity(subjectsActivity);
         }
 

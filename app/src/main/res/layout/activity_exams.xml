@@ -5,7 +5,7 @@
     android:id="@+id/examsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.nevechris.scheduleplanner.ExamsActivity">
+    tools:context="fr.nevechris.scheduleplannerold.ExamsActivityold">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/exams_CoordinatorLayout"
-            tools:context="fr.nevechris.scheduleplanner.MainActivity">
+            tools:context="fr.nevechris.scheduleplanner.activity.MainActivity">
             <android.support.design.widget.AppBarLayout
                 android:id="@+id/exams_AppBarLayout"
                 android:layout_width="match_parent"

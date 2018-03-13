@@ -1,31 +1,25 @@
-package fr.nevechris.scheduleplanner;
+package fr.nevechris.scheduleplannerold;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
-import fr.nevechris.scheduleplanner.beans.Exam;
-import fr.nevechris.scheduleplanner.connection.DatabaseContract;
-import fr.nevechris.scheduleplanner.connection.DatabaseManager;
+import fr.nevechris.scheduleplannerold.beans.Examold;
+import fr.nevechris.scheduleplannerold.connection.DatabaseContract;
+import fr.nevechris.scheduleplannerold.connection.DatabaseManager;
 
-import static fr.nevechris.scheduleplanner.R.string.today_exam;
+import static fr.nevechris.scheduleplannerold.R.string.today_exam;
 
-public class DateExams extends AppCompatActivity {
+public class DateExamsold extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +46,7 @@ public class DateExams extends AppCompatActivity {
             }
         });*/
 
-        Exam exam = getExamForDayFromDatabase(dateAsLong);
+        Examold exam = getExamForDayFromDatabase(dateAsLong);
 
         RelativeLayout noExamLayout = (RelativeLayout) findViewById(R.id.layout_no_exam),
                 examLayout = (RelativeLayout) findViewById(R.id.layout_exam);
@@ -77,7 +71,7 @@ public class DateExams extends AppCompatActivity {
     }
 
 
-    private Exam getExamForDayFromDatabase(long dateAsLong) {
+    private Examold getExamForDayFromDatabase(long dateAsLong) {
         SQLiteDatabase db = DatabaseManager.getConnection().getReadableDatabase();
         String[] projection = {
                 DatabaseContract.FeedEntry.EXAMS_EXAMID,
@@ -93,7 +87,7 @@ public class DateExams extends AppCompatActivity {
         String[] sWhereArgs = { String.valueOf(dateAsLong) };
 
         Cursor cursor = db.query(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, projection, sWhereClause, sWhereArgs, null, null, null);
-        Exam currentExam = null;
+        Examold currentExam = null;
         while(cursor.moveToNext()) {
             int nExamId = cursor.getInt(
                     cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_EXAMID));
@@ -103,7 +97,7 @@ public class DateExams extends AppCompatActivity {
                     sPlace = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_PLACE));
             int nGrade = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_GRADE));
 
-            currentExam = new Exam(nExamId, sTitle, sDescription, sTeacherName, sPlace);
+            currentExam = new Examold(nExamId, sTitle, sDescription, sTeacherName, sPlace);
             currentExam.setGrade(nGrade);// TODO organise constructors
         }
 

@@ -1,13 +1,10 @@
-package fr.nevechris.scheduleplanner;
+package fr.nevechris.scheduleplannerold;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -21,15 +18,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import fr.nevechris.scheduleplanner.beans.Exam;
-import fr.nevechris.scheduleplanner.connection.DatabaseContract;
-import fr.nevechris.scheduleplanner.connection.DatabaseManager;
+import fr.nevechris.scheduleplannerold.beans.Examold;
+import fr.nevechris.scheduleplannerold.connection.DatabaseContract;
+import fr.nevechris.scheduleplannerold.connection.DatabaseManager;
 
-import static fr.nevechris.scheduleplanner.R.id.home;
-import static fr.nevechris.scheduleplanner.R.id.toolbar;
-import static fr.nevechris.scheduleplanner.R.string.today_exam;
-
-public class CreateExamActivity extends AppCompatActivity {
+public class CreateExamActivityold extends AppCompatActivity {
 
     private EditText examDate;
     private EditText subjectEditText;
@@ -100,7 +93,7 @@ public class CreateExamActivity extends AppCompatActivity {
         if (allRequiredFieldsArePresent()) {
             // TODO get the constructor work together
 
-            Exam newExam = new Exam(
+            Examold newExam = new Examold(
                     descriptionEditText.getText().toString(),
                     dateFormatter.parse(datePicker.getText().toString()).getTime(),
                     teacherNameEditText.getText().toString(),
@@ -115,9 +108,9 @@ public class CreateExamActivity extends AppCompatActivity {
     }
 
     private void goBackToHomeScreen() {
-        Intent homeScreenActivity = new Intent(getApplicationContext(), MainActivity.class);
+        Intent homeScreenActivity = new Intent(getApplicationContext(), MainActivityold.class);
         startActivity(homeScreenActivity);
-        //TODO: refresh calendar data on home screen and display toast ("Exam created !")
+        //TODO: refresh calendar data on home screen and display toast ("Examold created !")
     }
 
     private void initialiseDatePicker() {
@@ -132,7 +125,7 @@ public class CreateExamActivity extends AppCompatActivity {
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
-    private void saveExam(Exam exam) {
+    private void saveExam(Examold exam) {
         SQLiteDatabase writeDb = DatabaseManager.getConnection().getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DatabaseContract.FeedEntry.EXAMS_EXAMID, 1);

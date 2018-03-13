@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context="fr.nevechris.scheduleplanner.MainActivity">
+    tools:context="fr.nevechris.scheduleplannerold.MainActivityold">
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="fr.nevechris.scheduleplanner.MainActivity">
+        tools:context="fr.nevechris.scheduleplannerold.MainActivityold">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -80,20 +80,44 @@
                     android:layout_width="wrap_content"
                     android:text="@string/exam_description"
                     android:textSize="@dimen/form_text_size"
-                    android:textStyle="italic"/>
+                    android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/examDescription"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingLeft="20dp"
                     android:textSize="@dimen/form_text_size"
-                    android:textStyle="italic"
+                    tools:layout_editor_absoluteY="25dp"
+                    tools:layout_editor_absoluteX="0dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/subjectLayout"
+                android:layout_below="@id/descriptionLayout"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:layout_editor_absoluteY="25dp"
+                tools:layout_editor_absoluteX="8dp">
+                <TextView
+                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/exam_subject"
+                    android:textSize="@dimen/form_text_size"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/examSubject"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:textSize="@dimen/form_text_size"
                     tools:layout_editor_absoluteY="25dp"
                     tools:layout_editor_absoluteX="0dp" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/teacherNameLayout"
-                android:layout_below="@id/descriptionLayout"
+                android:layout_below="@id/subjectLayout"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:paddingLeft="20dp"
@@ -103,14 +127,13 @@
                     android:layout_width="wrap_content"
                     android:text="@string/exam_teacher_name"
                     android:textSize="@dimen/form_text_size"
-                    android:textStyle="italic" />
+                    android:textStyle="bold" />
                 <TextView
                     android:id="@+id/teacherName"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingLeft="20dp"
-                    android:textSize="@dimen/form_text_size"
-                    android:textStyle="italic" />
+                    android:textSize="@dimen/form_text_size" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/placeLayout"
@@ -124,18 +147,57 @@
                     android:layout_width="wrap_content"
                     android:text="@string/exam_place"
                     android:textSize="@dimen/form_text_size"
-                    android:textStyle="italic" />
+                    android:textStyle="bold" />
                 <TextView
                     android:id="@+id/placeTextView"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingLeft="20dp"
+                    android:textSize="@dimen/form_text_size" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/difficultyLayout"
+                android:layout_below="@id/placeLayout"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+                <TextView
+                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/exam_difficulty"
                     android:textSize="@dimen/form_text_size"
-                    android:textStyle="italic" />
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/difficultyTextView"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:textSize="@dimen/form_text_size" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/notesLayout"
+                android:layout_below="@id/difficultyLayout"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+                <TextView
+                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/exam_notes"
+                    android:textSize="@dimen/form_text_size"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/notesTextView"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:textSize="@dimen/form_text_size" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/gradeLayout"
-                android:layout_below="@id/placeLayout"
+                android:layout_below="@id/notesLayout"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:paddingLeft="20dp"
@@ -145,14 +207,13 @@
                     android:layout_width="wrap_content"
                     android:text="@string/exam_grade"
                     android:textSize="@dimen/form_text_size"
-                    android:textStyle="italic" />
+                    android:textStyle="bold" />
                 <TextView
                     android:id="@+id/examGrade"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:paddingLeft="20dp"
-                    android:textSize="@dimen/form_text_size"
-                    android:textStyle="italic" />
+                    android:textSize="@dimen/form_text_size" />
             </LinearLayout>
         </RelativeLayout>
 

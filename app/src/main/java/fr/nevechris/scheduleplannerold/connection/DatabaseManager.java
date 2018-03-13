@@ -1,8 +1,7 @@
-package fr.nevechris.scheduleplanner.connection;
+package fr.nevechris.scheduleplannerold.connection;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by Chris on 30/10/2017.

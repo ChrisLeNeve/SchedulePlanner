@@ -1,4 +1,4 @@
-package fr.nevechris.scheduleplanner;
+package fr.nevechris.scheduleplannerold;
 
 import org.junit.Test;
 

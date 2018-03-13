@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context="fr.nevechris.scheduleplanner.SubjectsActivity">
+    tools:context="fr.nevechris.scheduleplannerold.SubjectsActivityold">
 
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +15,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="fr.nevechris.scheduleplanner.MainActivity">
+        tools:context="fr.nevechris.scheduleplanner.activity.MainActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"

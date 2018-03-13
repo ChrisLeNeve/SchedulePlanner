@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context="fr.nevechris.scheduleplanner.MainActivity">
+    tools:context="fr.nevechris.scheduleplanner.activity.MainActivity">
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="fr.nevechris.scheduleplanner.MainActivity">
+        tools:context="fr.nevechris.scheduleplanner.activity.MainActivity">
 
 
         <android.support.design.widget.AppBarLayout
@@ -38,10 +38,6 @@
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
-        <!--<ScrollView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
-
             <RelativeLayout
                 android:id="@+id/layout_create_exam"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -49,7 +45,29 @@
                 android:layout_width="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/createExam_Title_Layout"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+                    <TextView
+                        android:layout_height="60dp"
+                        android:layout_width="wrap_content"
+                        android:text="@string/exam_title"
+                        android:textSize="@dimen/form_text_size"
+                        android:textStyle="italic" />
+                    <EditText
+                        android:id="@+id/createExam_Title_EditText"
+                        android:inputType="text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:textSize="@dimen/form_text_size"
+                        android:textStyle="italic" />
+                </LinearLayout>
+                <LinearLayout
                     android:id="@+id/createExam_Description_Layout"
+                    android:layout_below="@id/createExam_Title_Layout"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:paddingLeft="20dp"

@@ -1,4 +1,4 @@
-package fr.nevechris.scheduleplanner.connection;
+package fr.nevechris.scheduleplannerold.connection;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

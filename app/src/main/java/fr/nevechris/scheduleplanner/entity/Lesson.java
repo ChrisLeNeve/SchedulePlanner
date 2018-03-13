@@ -1,4 +1,4 @@
-package fr.nevechris.scheduleplanner.beans;
+package fr.nevechris.scheduleplanner.entity;
 
 /**
  * Created by Chris on 01/11/2017.

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.nevechris.scheduleplanner">
+    package="fr.nevechris.scheduleplannerold">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="fr.nevechris.scheduleplanner.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,28 +19,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CalendarWrapper"
+            android:name="fr.nevechris.scheduleplanner.activity.CalendarWrapper"
             android:label="@string/title_activity_calendar_wrapper"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DateExams"
+            android:name="fr.nevechris.scheduleplanner.activity.DateExams"
             android:label="@string/title_activity_date_exams"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SubjectsActivity"
+            android:name="fr.nevechris.scheduleplannerold.SubjectsActivityold"
             android:label="@string/title_activity_subjects"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="fr.nevechris.scheduleplanner.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="fr.nevechris.scheduleplanner.MainActivity" />
+                android:value="fr.nevechris.scheduleplanner.activity.MainActivity" />
         </activity>
         <activity
-            android:name=".ExamsActivity"
+            android:name="fr.nevechris.scheduleplanner.activity.ExamsActivity"
             android:label="@string/title_activity_exams"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CreateExamActivity"
+            android:name="fr.nevechris.scheduleplanner.activity.CreateExamActivity"
             android:label="@string/title_activity_create_exam"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

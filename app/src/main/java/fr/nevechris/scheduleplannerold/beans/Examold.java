@@ -1,10 +1,10 @@
-package fr.nevechris.scheduleplanner.beans;
+package fr.nevechris.scheduleplannerold.beans;
 
 /**
  * Created by Chris on 01/11/2017.
  */
 
-public class Exam {
+public class Examold {
     private int nExamId;
     private String sTitle;
     private String sDescription;
@@ -21,16 +21,16 @@ public class Exam {
     // If several are: use a builder. Otherwise: clean up
 
 //    Not used
-//    public Exam(int nExamId, long lDate) {
+//    public Examold(int nExamId, long lDate) {
 //        this.nExamId = nExamId;
 //        this.lDate = lDate;
 //    }
 
-    public Exam() {
+    public Examold() {
 
     }
 
-    public Exam(int nExamId, String sTitle, String sDescription, String sTeacherName, String sPlace) {
+    public Examold(int nExamId, String sTitle, String sDescription, String sTeacherName, String sPlace) {
         this.nExamId = nExamId;
         this.sTitle = sTitle;
         this.sDescription = sDescription;
@@ -38,7 +38,7 @@ public class Exam {
         this.sPlace = sPlace;
     }
 
-    public Exam(String sDescription, long lDate, String sTeacherName, String sPlace, int nDifficulty, String sNotes) {
+    public Examold(String sDescription, long lDate, String sTeacherName, String sPlace, int nDifficulty, String sNotes) {
         this.sDescription = sDescription;
         this.lDate = lDate;
         this.sTeacherName = sTeacherName;

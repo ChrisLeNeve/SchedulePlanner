@@ -1,4 +1,4 @@
-package fr.nevechris.scheduleplanner;
+package fr.nevechris.scheduleplannerold;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

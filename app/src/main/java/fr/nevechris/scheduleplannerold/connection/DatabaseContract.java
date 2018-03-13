@@ -1,6 +1,4 @@
-package fr.nevechris.scheduleplanner.connection;
-
-import android.provider.BaseColumns;
+package fr.nevechris.scheduleplannerold.connection;
 
 /**
  * Created by Chris on 31/10/2017.

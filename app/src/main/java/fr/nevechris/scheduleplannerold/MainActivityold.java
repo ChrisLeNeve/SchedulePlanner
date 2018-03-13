@@ -1,4 +1,4 @@
-package fr.nevechris.scheduleplanner;
+package fr.nevechris.scheduleplannerold;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -27,10 +27,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import fr.nevechris.scheduleplanner.connection.DatabaseContract;
-import fr.nevechris.scheduleplanner.connection.DatabaseManager;
+import fr.nevechris.scheduleplannerold.connection.DatabaseContract;
+import fr.nevechris.scheduleplannerold.connection.DatabaseManager;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivityold extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private CaldroidFragment caldroidFragment;
     private NavigationView navigationView;
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent newExamActivity = new Intent(getApplicationContext(), CreateExamActivity.class);
+                Intent newExamActivity = new Intent(getApplicationContext(), CreateExamActivityold.class);
                 startActivity(newExamActivity);
             }
         });
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 long dateInMs = date.getTime();
                 String sDateInMs = String.valueOf(dateInMs);
 
-                Intent dateExam = new Intent(getApplicationContext(), DateExams.class);
+                Intent dateExam = new Intent(getApplicationContext(), DateExamsold.class);
                 dateExam.putExtra("date", sDateInMs);
                 startActivity(dateExam);
             }
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            return true;
 //        } else if (item.getItemId() == Integer.valueOf(R.id.nav_subjects)) {
 ////                showHelp();
-//            startActivity(new Intent(this, DateExams.class));
+//            startActivity(new Intent(this, DateExamsold.class));
 //            return true;
 //        } else if (item.getItemId() == Integer.valueOf(R.id.nav_exams)) {
 //            return super.onOptionsItemSelected(item);
@@ -218,11 +218,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 //        View oudated
 //        if (id == R.id.nav_subjects) {
-//            Intent subjectsActivity = new Intent(getApplicationContext(), SubjectsActivity.class);
+//            Intent subjectsActivity = new Intent(getApplicationContext(), SubjectsActivityold.class);
 //            startActivity(subjectsActivity);
 //        } else
         if (id == R.id.nav_exams) {
-            Intent examsActivity = new Intent(getApplicationContext(), ExamsActivity.class);
+            Intent examsActivity = new Intent(getApplicationContext(), ExamsActivityold.class);
             startActivity(examsActivity);
         }
 

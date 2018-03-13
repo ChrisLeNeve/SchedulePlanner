@@ -1,8 +1,6 @@
 package fr.nevechris.scheduleplanner.activity;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,14 +15,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import fr.nevechris.scheduleplannerold.R;
-import fr.nevechris.scheduleplannerold.beans.Examold;
-import fr.nevechris.scheduleplannerold.connection.DatabaseContract;
-import fr.nevechris.scheduleplannerold.connection.DatabaseManager;
 
 public class ExamsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -47,11 +38,7 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
-        DatabaseManager.createDbHelper(getApplication());
-        List<Examold> allExamsWithGrades = fetchExamsWithResults();
-//        Table test - doesn't seem good, let's try something else
-//        displayInTable(allExamsWithGrades);
+//        List<Exam> allExamsWithGrades = fetchExamsWithResults();
 
         String[] mobileArray = {"Human reproduction (100%)", "Maths (90%)", "French (75%)", "History (0%)"};
 
@@ -88,7 +75,7 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
 //        }
 //    }
 
-    private List<Examold> fetchExamsWithResults() {
+    /*private List<Examold> fetchExamsWithResults() {
         SQLiteDatabase readDb = DatabaseManager.getConnection().getReadableDatabase();
         String[] projection = {
                 DatabaseContract.FeedEntry.EXAMS_TITLE,
@@ -99,7 +86,6 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
         // Where clause
         String sWhereClause = DatabaseContract.FeedEntry.EXAMS_GRADE + " <> ?";
         String[] sWhereArgs = { String.valueOf(0) };
-//        Cursor cursor = readDb.query(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, projection, sWhereClause, /*sWhereArgs*/null, null, null, null);
 
         Cursor cursor = readDb.query(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, projection, sWhereClause, sWhereArgs, null, null, null);
         List<Examold> allExams = new ArrayList<Examold>();
@@ -119,7 +105,7 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
         cursor.close();
 
         return allExams;
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

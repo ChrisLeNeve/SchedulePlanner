@@ -1,9 +1,7 @@
 package fr.nevechris.scheduleplanner.activity;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -28,13 +26,10 @@ import com.roomorama.caldroid.CaldroidListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import fr.nevechris.scheduleplanner.service.ExamService;
 import fr.nevechris.scheduleplannerold.R;
-import fr.nevechris.scheduleplannerold.connection.DatabaseContract;
-import fr.nevechris.scheduleplannerold.connection.DatabaseManager;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private CaldroidFragment caldroidFragment;

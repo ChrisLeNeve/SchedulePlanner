@@ -1,6 +1,7 @@
 package fr.nevechris.scheduleplanner.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -15,97 +16,71 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.List;
+
+import fr.nevechris.scheduleplanner.entity.Exam;
+import fr.nevechris.scheduleplanner.service.ExamService;
 import fr.nevechris.scheduleplannerold.R;
 
 public class ExamsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private NavigationView navigationView;
 
+    private ExamService examService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exams);
+        examService = new ExamService(getApplicationContext());
+
+        insertToolbar();
+        updateNavigationView();
+
+        fetchExamsWithResults();
+    }
+
+    private void insertToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.menu_past_exams));
         setSupportActionBar(toolbar);
-
-        navigationView = (NavigationView) findViewById(R.id.nav_view_exams);
-        navigationView.getMenu().getItem(1).setChecked(true);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.examsLayout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-//        List<Exam> allExamsWithGrades = fetchExamsWithResults();
-
-        String[] mobileArray = {"Human reproduction (100%)", "Maths (90%)", "French (75%)", "History (0%)"};
-
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R .layout.results_item_template, mobileArray);
-
-        ListView listView = (ListView) findViewById(R.id.mobile_list);
-        listView.setAdapter(adapter);
-
+    }
+    private void updateNavigationView() {
+        navigationView = (NavigationView) findViewById(R.id.nav_view_exams);
+        navigationView.getMenu().getItem(1).setChecked(true);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_exams);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void fetchExamsWithResults() {
+        new AsyncTask<Void, Void, List<Exam>>() {
+            @Override
+            protected List<Exam> doInBackground(Void... params) {
+                return examService.getExamsWithResults();
+            }
+            @Override
+            protected void onPostExecute(List<Exam> exams) {
+                populateList(exams);
+            }
+        }.execute();
+    }
 
-//    private void displayInTable(List<Examold> allExamWithDates) {
-//        TableLayout table = (TableLayout) findViewById(R.id.contentExamsTable);
-//
-//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-//        params.gravity = Gravity.CENTER;
-//
-//        for (int i = 0; i < allExamWithDates.size(); i++) {
-//            TableRow row = new TableRow(this);
-//
-//            TextView textDescription = new TextView(this), textGrade = new TextView(this);
-//            textDescription.setText(allExamWithDates.get(i).getDescription());
-//            textDescription.setLayoutParams(params);
-//            textGrade.setText(String.valueOf(allExamWithDates.get(i).getGrade()));
-//            textGrade.setLayoutParams(params);
-//
-//            row.addView(textDescription);
-//            row.addView(textGrade);
-//
-//            table.addView(row);
-//        }
-//    }
+    private void populateList(List<Exam> examsWithResults) {
+        String[] titlesAsArray = new String[examsWithResults.size()];
+        for (int i = 0; i < examsWithResults.size(); i++)
+            titlesAsArray[i] = examsWithResults.get(i).getTitle();
 
-    /*private List<Examold> fetchExamsWithResults() {
-        SQLiteDatabase readDb = DatabaseManager.getConnection().getReadableDatabase();
-        String[] projection = {
-                DatabaseContract.FeedEntry.EXAMS_TITLE,
-                DatabaseContract.FeedEntry.EXAMS_DESCRIPTION,
-                DatabaseContract.FeedEntry.EXAMS_GRADE
-        };
-
-        // Where clause
-        String sWhereClause = DatabaseContract.FeedEntry.EXAMS_GRADE + " <> ?";
-        String[] sWhereArgs = { String.valueOf(0) };
-
-        Cursor cursor = readDb.query(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, projection, sWhereClause, sWhereArgs, null, null, null);
-        List<Examold> allExams = new ArrayList<Examold>();
-        Date currentDate = null;
-        while(cursor.moveToNext()) {
-            String examTitle = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_TITLE));
-            String description = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_DESCRIPTION));
-            int examGrade = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseContract.FeedEntry.EXAMS_GRADE));
-
-            Examold exam = new Examold();
-            exam.setTitle(examTitle);
-            exam.setDescription(description);
-            exam.setGrade(examGrade);
-
-            allExams.add(exam);
-        }
-        cursor.close();
-
-        return allExams;
-    }*/
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R .layout.results_item_template, titlesAsArray);
+        ListView listView = (ListView) findViewById(R.id.mobile_list);
+        listView.setAdapter(adapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -126,9 +101,6 @@ public class ExamsActivity extends AppCompatActivity implements NavigationView.O
         if (id == R.id.nav_home) {
             Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(mainActivity);
-//        } else if (id == R.id.nav_subjects) { //View outdated
-//            Intent subjectsActivity = new Intent(getApplicationContext(), SubjectsActivityold.class);
-//            startActivity(subjectsActivity);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.examsLayout);

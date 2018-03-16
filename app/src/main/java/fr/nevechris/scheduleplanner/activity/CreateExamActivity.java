@@ -46,37 +46,18 @@ public class CreateExamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_exam);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.createExam_toolbar);
-        toolbar.setTitle("Create exam");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
         this.context = this.getApplicationContext();
         examService = new ExamService(getApplicationContext());
 
-        dateFormatter = new SimpleDateFormat("dd MMM yyyy", Locale.ITALIAN);
-
-        subjectEditText = (EditText) findViewById(R.id.createExam_Subject_EditText);
-        titleEditText = (EditText) findViewById(R.id.createExam_Title_EditText);
-        descriptionEditText = (EditText) findViewById(R.id.createExam_Description_EditText);
-        teacherNameEditText = (EditText) findViewById(R.id.createExam_TeacherName_EditText);
-        difficultyEditText = (EditText) findViewById(R.id.createExam_Difficulty_EditText);
-        placeEditText = (EditText) findViewById(R.id.createExam_Place_EditText);
-        notesEditText = (EditText) findViewById(R.id.createExam_Notes_EditText);
-        gradeEditText = (EditText) findViewById(R.id.createExam_Grade_EditText);
-        datePicker = (EditText) findViewById(R.id.createExam_Date_EditText);
-        examDate = (EditText) findViewById(R.id.createExam_Date_EditText);
-
-        examDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean bHasFocus) {
-                if (bHasFocus)
-                    datePickerDialog.show();
-            }
-        });
+        configureToolbar();
         initialiseDatePicker();
 
+        assignGlobalVariables();
+
+        configureSaveButton();
+    }
+
+    private void configureSaveButton() {
         saveButton = (Button) findViewById(R.id.createExam_Save_Button);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +67,36 @@ public class CreateExamActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     System.out.println("Ah! dose.");
                 }
+            }
+        });
+    }
+
+    private void configureToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.createExam_toolbar);
+        toolbar.setTitle("Create exam");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void assignGlobalVariables() {
+        dateFormatter = new SimpleDateFormat("dd MMM yyyy", Locale.ITALIAN);
+
+        subjectEditText = findViewById(R.id.createExam_Subject_EditText);
+        titleEditText = findViewById(R.id.createExam_Title_EditText);
+        descriptionEditText = findViewById(R.id.createExam_Description_EditText);
+        teacherNameEditText = findViewById(R.id.createExam_TeacherName_EditText);
+        difficultyEditText = findViewById(R.id.createExam_Difficulty_EditText);
+        placeEditText = findViewById(R.id.createExam_Place_EditText);
+        notesEditText = findViewById(R.id.createExam_Notes_EditText);
+        gradeEditText = findViewById(R.id.createExam_Grade_EditText);
+        datePicker = findViewById(R.id.createExam_Date_EditText);
+        examDate = findViewById(R.id.createExam_Date_EditText);
+
+        examDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean bHasFocus) {
+                if (bHasFocus)
+                    datePickerDialog.show();
             }
         });
     }
@@ -142,19 +153,6 @@ public class CreateExamActivity extends AppCompatActivity {
                 goBackToHomeScreen();
             }
         }.execute();
-
-//        SQLiteDatabase writeDb = DatabaseManager.getConnection().getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(DatabaseContract.FeedEntry.EXAMS_EXAMID, 1);
-//        values.put(DatabaseContract.FeedEntry.EXAMS_DATE, exam.getStartDate());
-//        values.put(DatabaseContract.FeedEntry.EXAMS_TITLE, exam.getTitle());
-//        values.put(DatabaseContract.FeedEntry.EXAMS_DAYSNEEDEDTOPREPARE, exam.getDaysNeededToPrepare());
-//        values.put(DatabaseContract.FeedEntry.EXAMS_DESCRIPTION, exam.getDescription());
-//        values.put(DatabaseContract.FeedEntry.EXAMS_DIFFICULTY, exam.getDifficulty());
-//        values.put(DatabaseContract.FeedEntry.EXAMS_PLACE, exam.getPlace());
-//        values.put(DatabaseContract.FeedEntry.EXAMS_TEACHER_NAME, exam.getTeacherName());
-//        values.put(DatabaseContract.FeedEntry.EXAMS_GRADE, exam.getGrade());
-//        long newRowId = writeDb.insert(DatabaseContract.FeedEntry.EXAMS_TABLE_NAME, null, values);
     }
 
     private boolean allRequiredFieldsArePresent() {

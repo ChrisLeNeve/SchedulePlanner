@@ -52,4 +52,8 @@ public class ExamService {
         return db.examDao().getExamByDate(startDate);
     }
 
+    public List<Exam> getExamsWithResults() {
+        return db.examDao().getExamsWithGrades();
+    }
+
 }

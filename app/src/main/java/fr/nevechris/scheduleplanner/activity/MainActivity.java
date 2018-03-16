@@ -43,6 +43,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        configureToolbar();
+        configureNavigationView();
+        configureFloatingActionButtons();
+
+        this.context = this.getApplicationContext();
+        examService = new ExamService(getApplicationContext());
+        caldroidFragment = new CaldroidFragment();
+
+        fetchDatesAndUpdateCalendar();
+    }
+
+    private void configureToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.menu_home);
         setSupportActionBar(toolbar);
@@ -52,20 +65,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+    }
 
-        this.context = this.getApplicationContext();
-
-        examService = new ExamService(getApplicationContext());
-
+    private void configureNavigationView() {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
+    }
 
-        caldroidFragment = new CaldroidFragment();
-        fetchDatesAndUpdateCalendar();
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_create_exam),
-                deleteExamsFab = (FloatingActionButton) findViewById(R.id.fab_delete_all_exams);
+    private void configureFloatingActionButtons() {
+        FloatingActionButton fab = findViewById(R.id.fab_create_exam),
+                deleteExamsFab = findViewById(R.id.fab_delete_all_exams);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,14 +83,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(newExamActivity);
             }
         });
-
         deleteExamsFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 deleteAllExams();
             }
         });
-
     }
 
     private void deleteAllExams()  {
@@ -176,11 +184,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.home_layout);
         drawer.closeDrawers();
 
-//        View oudated
-//        if (id == R.id.nav_subjects) {
-//            Intent subjectsActivity = new Intent(getApplicationContext(), SubjectsActivityold.class);
-//            startActivity(subjectsActivity);
-//        } else
         if (id == R.id.nav_exams) {
             Intent examsActivity = new Intent(getApplicationContext(), ExamsActivity.class);
             startActivity(examsActivity);

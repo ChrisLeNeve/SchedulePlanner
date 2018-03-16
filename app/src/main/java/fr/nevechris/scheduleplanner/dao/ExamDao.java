@@ -32,7 +32,9 @@ public interface ExamDao {
     void deleteExams();
 
     @Query("SELECT * FROM EXAM WHERE date_start = :startDate")
-
     @TypeConverters(DateConverter.class)
     Exam getExamByDate(Date startDate);
+
+    @Query("SELECT * FROM EXAM WHERE grade != 0")
+    List<Exam> getExamsWithGrades();
 }

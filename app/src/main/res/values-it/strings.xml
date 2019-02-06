@@ -7,4 +7,21 @@
     <string name="menu_home">Home</string>
     <string name="menu_subjects">Materie</string>
     <string name="menu_past_exams">Esami passati</string>
+    <string name="today_exam">Exam for %1$s</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_date_exams">DateExams</string>
+    <string name="title_activity_subjects">SubjectsActivity</string>
+    <string name="title_activity_exams">ExamsActivity</string>
+
+    <string name="exam_subject">Subject</string>
+    <string name="exam_title">Name</string>
+    <string name="exam_description">Description</string>
+    <string name="exam_teacher_name">Teacher name</string>
+    <string name="exam_difficulty">Difficulty</string>
+    <string name="exam_place">Place</string>
+    <string name="exam_notes">Notes</string>
+    <string name="exam_grade">Grade</string>
+    <string name="title_activity_temp_to_delete">TempActivityToDelete</string>
+    <string name="title_activity_create_exam">activity_create_exam</string>
 </resources>

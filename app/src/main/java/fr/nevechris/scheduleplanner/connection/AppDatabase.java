@@ -11,6 +11,7 @@ import fr.nevechris.scheduleplanner.entity.Exam;
  */
 
 @Database(version = 3, entities = {Exam.class})
-public abstract class AppDatabase extends RoomDatabase {
+public abstract class AppDatabase extends RoomDatabase
+ {
     public abstract ExamDao examDao();
 }

@@ -10,7 +10,6 @@
     <string name="today_exam">Exam for %1$s</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_date_exams">DateExams</string>
     <string name="title_activity_subjects">SubjectsActivity</string>
     <string name="title_activity_exams">ExamsActivity</string>

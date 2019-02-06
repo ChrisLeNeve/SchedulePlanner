@@ -21,4 +21,4 @@ Minimum Android version required: 4.4.2 for compatibility with Caldroid.
 [![22782082-534554996880214-468682102-n.png](https://i.postimg.cc/pTxsRYyT/22782082-534554996880214-468682102-n.png)](https://postimg.cc/QB4Qq7QG)
 
 
-Current status: stalled, an update to Android Studio broke something and I can't figure out what's wrong for the life of me :(
+Current status: stalled, an update to Android Studio broke something and I can't figure out what's wrong for the life of me :( also I have more urgent projects. However, if you'd like to see work continued on this, do send me a message and I'll start on it again.

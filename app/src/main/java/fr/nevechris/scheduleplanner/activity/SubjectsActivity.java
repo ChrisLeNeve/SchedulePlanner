@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import fr.nevechris.scheduleplannerold.R;
+import fr.nevechris.scheduleplanner.R;
 
 public class SubjectsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

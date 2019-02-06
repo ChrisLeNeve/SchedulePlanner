@@ -18,9 +18,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import fr.nevechris.scheduleplanner.R;
 import fr.nevechris.scheduleplanner.entity.Exam;
 import fr.nevechris.scheduleplanner.service.ExamService;
-import fr.nevechris.scheduleplannerold.R;
 
 public class CreateExamActivity extends AppCompatActivity {
 

@@ -14,9 +14,9 @@ import java.util.Locale;
 
 import fr.nevechris.scheduleplanner.entity.Exam;
 import fr.nevechris.scheduleplanner.service.ExamService;
-import fr.nevechris.scheduleplannerold.R;
+import fr.nevechris.scheduleplanner.R;
 
-import static fr.nevechris.scheduleplannerold.R.string.today_exam;
+import static fr.nevechris.scheduleplanner.R.string.today_exam;
 
 public class DateExams extends AppCompatActivity {
 

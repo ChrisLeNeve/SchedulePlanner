@@ -40,15 +40,6 @@ public class Exam {
 
     private String notes;
 
-    //TODO see which constructors are actually needed.
-    // If several are: use a builder. Otherwise: clean up
-
-//    Not used
-//    public Examold(int nExamId, long lDate) {
-//        this.nExamId = nExamId;
-//        this.lDate = lDate;
-//    }
-
     @Ignore
     public Exam() {
     }

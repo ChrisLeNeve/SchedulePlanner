@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.nevechris.scheduleplannerold">
+    package="fr.nevechris.scheduleplanner">
 
     <application
         android:allowBackup="true"
@@ -27,7 +27,7 @@
             android:label="@string/title_activity_date_exams"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="fr.nevechris.scheduleplannerold.SubjectsActivityold"
+            android:name="fr.nevechris.scheduleplanner.activity.SubjectsActivity"
             android:label="@string/title_activity_subjects"
             android:parentActivityName="fr.nevechris.scheduleplanner.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

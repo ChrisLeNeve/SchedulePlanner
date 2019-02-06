@@ -29,7 +29,7 @@ import java.util.Date;
 import java.util.List;
 
 import fr.nevechris.scheduleplanner.service.ExamService;
-import fr.nevechris.scheduleplannerold.R;
+import fr.nevechris.scheduleplanner.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private CaldroidFragment caldroidFragment;

@@ -20,7 +20,7 @@ import java.util.List;
 
 import fr.nevechris.scheduleplanner.entity.Exam;
 import fr.nevechris.scheduleplanner.service.ExamService;
-import fr.nevechris.scheduleplannerold.R;
+import fr.nevechris.scheduleplanner.R;
 
 public class ExamsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

@@ -5,6 +5,7 @@ Howdy! This will be an app to help people in school manage their exams. A great 
 Features hopefully will include:
 - Create exams and view on a calendar.
 - View past exams results, stats and averages.
+- Extended i18n support (started on English and Italian).
 
 
 This app uses Caldroid (https://github.com/roomorama/Caldroid), available for use under MIT license
@@ -15,8 +16,9 @@ Minimum Android version required: 4.4.2 for compatibility with Caldroid.
 
 ## Screenshots
 
+[![22809764-534550063547374-498875921-n.png](https://i.postimg.cc/c46XxJ1Q/22809764-534550063547374-498875921-n.png)](https://postimg.cc/YhK18MW9)
+
 [![22782082-534554996880214-468682102-n.png](https://i.postimg.cc/pTxsRYyT/22782082-534554996880214-468682102-n.png)](https://postimg.cc/QB4Qq7QG)
 
-[![22809764-534550063547374-498875921-n.png](https://i.postimg.cc/c46XxJ1Q/22809764-534550063547374-498875921-n.png)](https://postimg.cc/YhK18MW9)
 
 Current status: stalled, an update to Android Studio broke something and I can't figure out what's wrong for the life of me :(

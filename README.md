@@ -13,7 +13,7 @@ Minimum Android version required: 4.4.2 for compatibility with Caldroid.
 
 - Feedback, advice, feature requests: hit me up at ruler@christopher-neve.com or christopher.leneve@gmail.com.
 
-[![22782082-534554996880214-468682102-n.png]([![22782082-534554996880214-468682102-n.png](https://i.postimg.cc/pTxsRYyT/22782082-534554996880214-468682102-n.png)](https://postimg.cc/QB4Qq7QG)
+([![22782082-534554996880214-468682102-n.png](https://i.postimg.cc/pTxsRYyT/22782082-534554996880214-468682102-n.png)](https://postimg.cc/QB4Qq7QG)
 
 [![22809764-534550063547374-498875921-n.png]([![22809764-534550063547374-498875921-n.png](https://i.postimg.cc/c46XxJ1Q/22809764-534550063547374-498875921-n.png)](https://postimg.cc/YhK18MW9)
 

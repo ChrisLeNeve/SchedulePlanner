@@ -46,15 +46,15 @@
             app:layout_anchor="@id/fab_create_exam"
             app:layout_anchorGravity="top|right|end" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_delete_all_exams"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|top"
-            android:layout_margin="16dp"
-            app:srcCompat="@android:drawable/ic_input_delete"
-            app:layout_anchor="@id/dummy"
-            app:layout_anchorGravity="top|right|end" />
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/fab_delete_all_exams"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="end|top"-->
+            <!--android:layout_margin="16dp"-->
+            <!--app:srcCompat="@android:drawable/ic_input_delete"-->
+            <!--app:layout_anchor="@id/dummy"-->
+            <!--app:layout_anchorGravity="top|right|end" />-->
 
     </android.support.design.widget.CoordinatorLayout>
 

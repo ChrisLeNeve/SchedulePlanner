@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void configureFloatingActionButtons() {
-        FloatingActionButton fab = findViewById(R.id.fab_create_exam),
-                deleteExamsFab = findViewById(R.id.fab_delete_all_exams);
+        FloatingActionButton fab = findViewById(R.id.fab_create_exam);//,
+//                deleteExamsFab = findViewById(R.id.fab_delete_all_exams);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,15 +83,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(newExamActivity);
             }
         });
-        deleteExamsFab.setOnClickListener(new View.OnClickListener() {
+        /*deleteExamsFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 deleteAllExams();
             }
-        });
+        });*/
     }
 
-    private void deleteAllExams()  {
+    /*private void deleteAllExams()  {
         new AsyncTask<Void, Void, Boolean>() {
             @Override
             protected Boolean doInBackground(Void... params) {
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Toast.makeText(context, "Delete operation failed lad!", Toast.LENGTH_LONG);
             }
         }.execute();
-    }
+    }*/
 
     private void fetchDatesAndUpdateCalendar() {
         new AsyncTask<Void, Void, List<Date>>() {

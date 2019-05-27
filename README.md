@@ -24,4 +24,6 @@ Minimum Android version required: 4.4.2 for compatibility with Caldroid.
 
 [![Screenshot-20190527-132426.png](https://i.postimg.cc/0yH0Ymg9/Screenshot-20190527-132426.png)](https://postimg.cc/yDcRBDYG)
 
+[![Screenshot-20190527-132441.png](https://i.postimg.cc/pV49JZrG/Screenshot-20190527-132441.png)](https://postimg.cc/QVgxXcp1)
+
 Current status: pretty inactive in fairness, I have more urgent projects. However, if you'd like to see work continued on this, do send me a message and I'll start on it again. Seeing my work is useful to others motivates me.
